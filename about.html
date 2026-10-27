@@ -132,11 +132,29 @@
 </div>
 
 <script>
-  // Returns to the game. If there is no history, change "index.html" to your game's main page.
+  const fallbackPage = "index.html";
+  let isNavigatingBack = false;
+
   function goBack() {
-    if (history.length > 1) history.back();
-    else location.href = "index.html";
+    if (window.history.length > 1) {
+      isNavigatingBack = true;
+      window.history.back();
+      return;
+    }
+
+    window.location.href = document.referrer || fallbackPage;
   }
+
+  window.addEventListener("popstate", function () {
+    if (isNavigatingBack) {
+      isNavigatingBack = false;
+      return;
+    }
+
+    setTimeout(function () {
+      window.location.href = document.referrer || fallbackPage;
+    }, 0);
+  });
 </script>
 </body>
 </html>
