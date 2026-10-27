@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1030">
+<title>About</title>
+<style>
+  :root {
+    --bg-top: #0d1030;
+    --bg-bottom: #1a1f3d;
+    --panel: #222b42;
+    --panel-line: #2f3a57;
+    --yellow: #ffd60a;
+    --text: #e8ebf5;
+    --muted: #9aa3bd;
+    --gap: clamp(8px, 1.8vh, 16px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; margin: 0; overflow: hidden; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, #fff8 50%, transparent 52%),
+      radial-gradient(1px 1px at 78% 10%, #fff7 50%, transparent 52%),
+      radial-gradient(2px 2px at 88% 34%, #fff9 50%, transparent 52%),
+      radial-gradient(1px 1px at 30% 52%, #fff6 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 66% 70%, #fff8 50%, transparent 52%),
+      radial-gradient(1px 1px at 8% 86%, #fff6 50%, transparent 52%),
+      radial-gradient(1.5px 1.5px at 92% 92%, #fff7 50%, transparent 52%),
+      linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 18px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .wrap {
+    max-width: 480px; height: 100%; margin: 0 auto;
+    display: flex; flex-direction: column; gap: var(--gap);
+  }
+
+  .bar { display: flex; align-items: center; gap: 12px; flex: none; }
+  .btn-icon {
+    width: 48px; height: 48px; flex: none;
+    display: grid; place-items: center;
+    background: var(--panel); border: 0; border-radius: 14px;
+    color: var(--yellow); cursor: pointer;
+  }
+  .btn-icon:active { transform: scale(.94); }
+  .btn-icon svg { width: 22px; height: 22px; }
+  .title {
+    flex: 1; height: 48px; display: grid; place-items: center;
+    background: var(--panel); border-radius: 14px;
+    color: var(--yellow); font-weight: 800; font-size: 18px; letter-spacing: .5px;
+  }
+  .bar::after { content: ""; width: 48px; flex: none; }
+
+  .main {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column; justify-content: center; gap: var(--gap);
+  }
+  .card {
+    background: var(--panel); border-radius: 18px;
+    padding: clamp(12px, 2.4vh, 20px) 18px;
+  }
+  h2 { margin: 0 0 6px; font-size: clamp(15px, 2.2vh, 17px); color: var(--yellow); font-weight: 800; }
+  p { margin: 0; font-size: clamp(13px, 1.9vh, 15px); line-height: 1.5; color: var(--text); }
+  p + p { margin-top: 8px; }
+  .muted { color: var(--muted); }
+
+  .mail {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; min-height: 52px; margin-top: 12px;
+    background: var(--yellow); color: #1a1a1a;
+    border-radius: 14px; text-decoration: none;
+    font-weight: 800; font-size: 16px;
+  }
+  .mail:active { transform: scale(.98); }
+  .mail svg { width: 22px; height: 22px; }
+
+  .back {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; min-height: 50px; flex: none;
+    background: transparent; border: 2px solid var(--panel-line); border-radius: 14px;
+    color: var(--yellow); font: inherit; font-weight: 800; font-size: 16px; cursor: pointer;
+  }
+  .back:active { transform: scale(.98); }
+  .back svg { width: 20px; height: 20px; }
+
+  .ver { flex: none; text-align: center; font-size: 13px; color: var(--muted); }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+  @media (max-height: 600px) {
+    .btn-icon, .title { height: 42px; } .btn-icon { width: 42px; } .bar::after { width: 42px; }
+    .mail { min-height: 44px; margin-top: 8px; }
+    .back { min-height: 44px; }
+    .muted-extra { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <button class="btn-icon" onclick="goBack()" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="title">ABOUT</div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>About the game</h2>
+      <p>A relaxing puzzle game made for your phone. Solve each level at your own pace, with no timers and no pressure.</p>
+      <p class="muted-extra">Study the board, find the right path and clear every level. Stuck? Use a hint, or restart the level.</p>
+    </div>
+
+    <div class="card">
+      <h2>Feedback &amp; suggestions</h2>
+      <p class="muted">Found a bug or have an idea? We read every message.</p>
+      <a class="mail" href="mailto:studiohuseynoff@gmail.com?subject=Game%20feedback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg>
+        Send an email
+      </a>
+    </div>
+  </div>
+
+  <button class="back" onclick="goBack()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    Back to game
+  </button>
+
+  <div class="ver">Huseynoff Studio</div>
+</div>
+
+<script>
+  // Returns to the game. If there is no history, change "index.html" to your game's main page.
+  function goBack() {
+    if (history.length > 1) history.back();
+    else location.href = "index.html";
+  }
+</script>
+</body>
+</html>
